@@ -27,7 +27,7 @@ function App() {
         <nav className="card-preview__nav">
           <ul className="card__socialmedia">
             <li className="card__socialmedia--item">
-              <a href="" className="js-preview_phone" alt="mobile">
+              <a href="/" className="js-preview_phone" alt="mobile">
                 <i className="socialmedia_icon fas fa-mobile-alt"> </i>
               </a>
             </li>
@@ -37,12 +37,12 @@ function App() {
               </a>
             </li>
             <li className="card__socialmedia--item">
-              <a href="" className="js-preview_linkedin" alt="linkedin">
+              <a href="/" className="js-preview_linkedin" alt="linkedin">
                 <i className="socialmedia_icon fab fa-linkedin-in"></i>
               </a>
             </li>
             <li className="card__socialmedia--item">
-              <a href="" className="js-preview_github" alt="github">
+              <a href="/" className="js-preview_github" alt="github">
                 <i className="socialmedia_icon fab fa-github-alt"></i>
               </a>
             </li>
@@ -123,7 +123,7 @@ function App() {
 
               <label htmlFor="phone" className="form__label">Teléfono</label>
               <input type="tel" placeholder="Ej: 555-55-55-55" pattern="" name="phone" id="phone" className="form__input js-phone"
-                required pattern=" ^(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}" />
+                required /*pattern=" ^(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}" *//>
 
               <label htmlFor="linkedin" className="form__label">Linkedin</label>
               <input type="text" placeholder="Ej: linkedin.com/in/sally.hill" name="linkedin" id="linkedin"
@@ -153,7 +153,7 @@ function App() {
 
           <div className="createdCard js-createdCard collapsed">
             <h5 className="createdCard__title">La tarjeta ha sido creada:</h5>
-            <a className="createdCard__link js_createdCard__link" href="?????"></a>
+            <a className="createdCard__link js_createdCard__link" href="/"> </a>
             <button className="createdCard__buttonTwitter">
               <i className="fab fa-twitter"></i>
               <a className="buttonLink js-buttonLink" href="www.twitter.com" title="twitter">Compartir en Twitter</a>
@@ -166,7 +166,7 @@ function App() {
 
   <footer className="footer">
     <p className="footer__text">2021: Una Odisea con JavaScript.</p>
-    <a href="https://www.adalab.es/" target="_blank">
+    <a href="https://www.adalab.es/" target="_blank" rel="noreferrer">
       <img className="footer__logo" src={imageCam} alt="Adalab Logo" />
     </a>
   </footer>
