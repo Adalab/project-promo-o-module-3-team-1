@@ -1,13 +1,45 @@
-import '../styles/App.scss';
-import imageCam from '../images/cam-image.png';
-import logoAwesome from '../images/logo-awesome-profile-cards.svg';
+import "../styles/App.scss";
+import { useState } from "react";
+import imageCam from "../images/cam-image.png";
+import logoAwesome from "../images/logo-awesome-profile-cards.svg";
 
 function App() {
+  const [data, setData] = useState({
+    palette: 1,
+    name: "",
+    job: "",
+    photo: "",
+    email: "",
+    phone: "",
+    linkedin: "",
+    github: "",
+  });
+  const handleInput = (ev) => {
+    ev.preventDefault();
+    const inputChanged = ev.currentTarget.name;
+    if (inputChanged === "full_name") {
+      setData({ ...data, name: ev.currentTarget.value });
+    } else if (inputChanged === "job") {
+      setData({ ...data, job: ev.currentTarget.value });
+    } /*revisar las fotos tanto en input como en card*/ else if (
+      inputChanged === "photo"
+    ) {
+      setData({ ...data, photo: ev.currentTarget.value });
+    } else if (inputChanged === "email") {
+      setData({ ...data, email: ev.currentTarget.value });
+    } else if (inputChanged === "phone") {
+      setData({ ...data, phone: ev.currentTarget.value });
+    } else if (inputChanged === "linkedin") {
+      setData({ ...data, linkedin: ev.currentTarget.value });
+    } else if (inputChanged === "github") {
+      setData({ ...data, github: ev.currentTarget.value });
+    }
+  };
   return (
     <div>
       <header className="headerCard">
         <a href="./index.html">
-          {' '}
+          {" "}
           {/*revisar ruta*/}
           <img
             className="imgCard"
@@ -26,23 +58,30 @@ function App() {
           <div className="card-preview">
             <div className="card-preview__header js-card-preview-header">
               <h3 className="card-preview__title js-preview_name">
-                Nombre apellido
+                {data.name || "Nombre completo"}
               </h3>
               <p className="card-preview__subtitle js-preview_job">
-                Front-end developer
+                {data.job || "Front-end developer"}
               </p>
             </div>
-            <div className="card-preview__photo js__profile-image"></div>
+            <div
+              className="card-preview__photo js__profile-image"
+              style={'background-image:url+{data.photo}'}
+              ></div>
             <nav className="card-preview__nav">
               <ul className="card__socialmedia">
                 <li className="card__socialmedia--item">
-                  <a href="/" className="js-preview_phone" alt="mobile">
+                  <a
+                    href={`tel: ${data.phone || ""}`}
+                    className="js-preview_phone"
+                    alt="mobile"
+                  >
                     <i className="socialmedia_icon fas fa-mobile-alt"> </i>
                   </a>
                 </li>
                 <li className="card__socialmedia--item">
                   <a
-                    href="mailto:email@email.com"
+                    href={`mailto: ${data.email || "email@email.com"}`}
                     className="js-preview_email"
                     alt="email"
                   >
@@ -50,12 +89,24 @@ function App() {
                   </a>
                 </li>
                 <li className="card__socialmedia--item">
-                  <a href="/" className="js-preview_linkedin" alt="linkedin">
+                  <a
+                    href={`www.linkedin.com/in/${
+                      data.linkedin || "https://www.linkedin.com/"
+                    }`}
+                    className="js-preview_linkedin"
+                    alt="linkedin"
+                  >
                     <i className="socialmedia_icon fab fa-linkedin-in"></i>
                   </a>
                 </li>
                 <li className="card__socialmedia--item">
-                  <a href="/" className="js-preview_github" alt="github">
+                  <a
+                    href={`https://github.com/${
+                      data.github || "https://github.com/"
+                    }`}
+                    className="js-preview_github"
+                    alt="github"
+                  >
                     <i className="socialmedia_icon fab fa-github-alt"></i>
                   </a>
                 </li>
@@ -93,6 +144,7 @@ function App() {
                     id="colours1"
                     name="colourpalette"
                     className="js_colourpalette"
+                    onChange={handleInput}
                     defaultChecked
                   />
                   <input
@@ -161,6 +213,7 @@ function App() {
                     id="name"
                     className="form__input js-full_name"
                     defaultValue=""
+                    onChange={handleInput}
                     required
                     pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"
                   />
@@ -174,6 +227,7 @@ function App() {
                     id="job"
                     className="form__input js-job"
                     pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"
+                    onChange={handleInput}
                     required
                   />
 
@@ -193,6 +247,7 @@ function App() {
                       name="photo"
                       id="photo"
                       className="collapsed js__profile-upload-btn"
+                      onChange={handleInput}
                       required
                     />
                   </div>
@@ -206,6 +261,7 @@ function App() {
                     name="email"
                     id="email"
                     className="form__input js-email"
+                    onChange={handleInput}
                     required
                   />
 
@@ -219,7 +275,8 @@ function App() {
                     name="phone"
                     id="phone"
                     className="form__input js-phone"
-                    required /*pattern=" ^(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}" */
+                    onChange={handleInput}
+                    /*pattern=" ^(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}" */
                   />
 
                   <label htmlFor="linkedin" className="form__label">
@@ -231,6 +288,7 @@ function App() {
                     name="linkedin"
                     id="linkedin"
                     className="form__input js-linkedin"
+                    onChange={handleInput}
                     required
                   />
                   <label htmlFor="github" className="form__label">
@@ -242,6 +300,7 @@ function App() {
                     name="github"
                     id="github"
                     className="form__input js-github"
+                    onChange={handleInput}
                   />
                 </fieldset>
               </div>
@@ -269,7 +328,7 @@ function App() {
               <button className="buttonCard js-buttonCard buttonCard--on">
                 <i className="far fa-address-card"></i>
                 <p className="buttonCard__title">Crear tarjeta</p>
-              </button>{' '}
+              </button>{" "}
               {/*revisar botón. Input*/}
               <p className="catchError js_catchError"></p>
               <div className="createdCard js-createdCard collapsed">
@@ -277,7 +336,7 @@ function App() {
                   La tarjeta ha sido creada:
                 </h5>
                 <a className="createdCard__link js_createdCard__link" href="/">
-                  {' '}
+                  {" "}
                 </a>
                 <button className="createdCard__buttonTwitter">
                   <i className="fab fa-twitter"></i>
