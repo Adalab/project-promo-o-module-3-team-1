@@ -1,45 +1,48 @@
-import "../styles/App.scss";
-import { useState } from "react";
-import imageCam from "../images/cam-image.png";
-import logoAwesome from "../images/logo-awesome-profile-cards.svg";
+import '../styles/App.scss';
+import { useState } from 'react';
+import imageCam from '../images/cam-image.png';
+import logoAwesome from '../images/logo-awesome-profile-cards.svg';
 
 function App() {
   const [data, setData] = useState({
     palette: 1,
-    name: "",
-    job: "",
-    photo: "",
-    email: "",
-    phone: "",
-    linkedin: "",
-    github: "",
+    name: '',
+    job: '',
+    photo: '',
+    email: '',
+    phone: '',
+    linkedin: '',
+    github: '',
   });
   const handleInput = (ev) => {
-    ev.preventDefault();
+    //ev.preventDefault();
     const inputChanged = ev.currentTarget.name;
-    if (inputChanged === "full_name") {
+    if (inputChanged === 'full_name') {
       setData({ ...data, name: ev.currentTarget.value });
-    } else if (inputChanged === "job") {
+    } else if (inputChanged === 'job') {
       setData({ ...data, job: ev.currentTarget.value });
     } /*revisar las fotos tanto en input como en card*/ else if (
-      inputChanged === "photo"
+      inputChanged === 'photo'
     ) {
       setData({ ...data, photo: ev.currentTarget.value });
-    } else if (inputChanged === "email") {
+    } else if (inputChanged === 'email') {
       setData({ ...data, email: ev.currentTarget.value });
-    } else if (inputChanged === "phone") {
+    } else if (inputChanged === 'phone') {
       setData({ ...data, phone: ev.currentTarget.value });
-    } else if (inputChanged === "linkedin") {
+    } else if (inputChanged === 'linkedin') {
       setData({ ...data, linkedin: ev.currentTarget.value });
-    } else if (inputChanged === "github") {
+    } else if (inputChanged === 'github') {
       setData({ ...data, github: ev.currentTarget.value });
+    } else if (inputChanged === 'colourpalette') {
+      setData({ ...data, palette: parseInt(ev.currentTarget.id) });
     }
   };
+  console.log(data.palette);
   return (
     <div>
       <header className="headerCard">
         <a href="./index.html">
-          {" "}
+          {' '}
           {/*revisar ruta*/}
           <img
             className="imgCard"
@@ -58,21 +61,25 @@ function App() {
           <div className="card-preview">
             <div className="card-preview__header js-card-preview-header">
               <h3 className="card-preview__title js-preview_name">
-                {data.name || "Nombre completo"}
+                {data.name || 'Nombre completo'}
               </h3>
               <p className="card-preview__subtitle js-preview_job">
-                {data.job || "Front-end developer"}
+                {data.job || 'Front-end developer'}
               </p>
             </div>
             <div
               className="card-preview__photo js__profile-image"
-              style={'background-image:url+{data.photo}'}
-              ></div>
+              style={{
+                backgroundImage: `url(${
+                  data.photo || 'https://www.fillmurray.com/240/200'
+                })`,
+              }}
+            ></div>
             <nav className="card-preview__nav">
               <ul className="card__socialmedia">
                 <li className="card__socialmedia--item">
                   <a
-                    href={`tel: ${data.phone || ""}`}
+                    href={`tel:${data.phone || ''}`}
                     className="js-preview_phone"
                     alt="mobile"
                   >
@@ -81,7 +88,7 @@ function App() {
                 </li>
                 <li className="card__socialmedia--item">
                   <a
-                    href={`mailto: ${data.email || "email@email.com"}`}
+                    href={`mailto:${data.email || ''}`}
                     className="js-preview_email"
                     alt="email"
                   >
@@ -90,9 +97,7 @@ function App() {
                 </li>
                 <li className="card__socialmedia--item">
                   <a
-                    href={`www.linkedin.com/in/${
-                      data.linkedin || "https://www.linkedin.com/"
-                    }`}
+                    href={`http://www.linkedin.com/in/${data.linkedin}`}
                     className="js-preview_linkedin"
                     alt="linkedin"
                   >
@@ -101,9 +106,7 @@ function App() {
                 </li>
                 <li className="card__socialmedia--item">
                   <a
-                    href={`https://github.com/${
-                      data.github || "https://github.com/"
-                    }`}
+                    href={`https://github.com/${data.github}`}
                     className="js-preview_github"
                     alt="github"
                   >
@@ -141,25 +144,27 @@ function App() {
                   <input
                     type="radio"
                     defaultValue="colours1"
-                    id="colours1"
+                    id="1"
                     name="colourpalette"
-                    className="js_colourpalette"
+                    className="colourpalette"
                     onChange={handleInput}
                     defaultChecked
                   />
                   <input
                     type="radio"
                     defaultValue="colours2"
-                    id="colours2"
+                    id="2"
                     name="colourpalette"
-                    className="js_colourpalette"
+                    className="colourpalette"
+                    onChange={handleInput}
                   />
                   <input
                     type="radio"
                     defaultValue="colours3"
-                    id="colours3"
+                    id="3"
                     name="colourpalette"
-                    className="js_colourpalette"
+                    className="colourpalette"
+                    onChange={handleInput}
                   />
                 </form>
                 <section className="palettescolours">
@@ -241,7 +246,12 @@ function App() {
                     >
                       Añadir imagen
                     </label>
-                    <div className="form__image-section--preview js__profile-preview"></div>
+                    <div
+                      className="form__image-section--preview js__profile-preview"
+                      style={{
+                        backgroundImage: `url(${data.photo})`,
+                      }}
+                    ></div>
                     <input
                       type="file"
                       name="photo"
@@ -328,7 +338,7 @@ function App() {
               <button className="buttonCard js-buttonCard buttonCard--on">
                 <i className="far fa-address-card"></i>
                 <p className="buttonCard__title">Crear tarjeta</p>
-              </button>{" "}
+              </button>{' '}
               {/*revisar botón. Input*/}
               <p className="catchError js_catchError"></p>
               <div className="createdCard js-createdCard collapsed">
@@ -336,7 +346,7 @@ function App() {
                   La tarjeta ha sido creada:
                 </h5>
                 <a className="createdCard__link js_createdCard__link" href="/">
-                  {" "}
+                  {' '}
                 </a>
                 <button className="createdCard__buttonTwitter">
                   <i className="fab fa-twitter"></i>
