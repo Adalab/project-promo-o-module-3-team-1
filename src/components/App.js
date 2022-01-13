@@ -1,48 +1,31 @@
-import '../styles/App.scss';
-import { useState } from 'react';
-import imageCam from '../images/cam-image.png';
-import logoAwesome from '../images/logo-awesome-profile-cards.svg';
+import "../styles/App.scss";
+import { useState } from "react";
+import imageCam from "../images/cam-image.png";
+import logoAwesome from "../images/logo-awesome-profile-cards.svg";
 
 function App() {
   const [data, setData] = useState({
     palette: 1,
-    name: '',
-    job: '',
-    photo: '',
-    email: '',
-    phone: '',
-    linkedin: '',
-    github: '',
+    name: "",
+    job: "",
+    photo: "",
+    email: "",
+    phone: "",
+    linkedin: "",
+    github: "",
   });
   const handleInput = (ev) => {
-    //ev.preventDefault();
     const inputChanged = ev.currentTarget.name;
-    if (inputChanged === 'full_name') {
-      setData({ ...data, name: ev.currentTarget.value });
-    } else if (inputChanged === 'job') {
-      setData({ ...data, job: ev.currentTarget.value });
-    } /*revisar las fotos tanto en input como en card*/ else if (
-      inputChanged === 'photo'
-    ) {
-      setData({ ...data, photo: ev.currentTarget.value });
-    } else if (inputChanged === 'email') {
-      setData({ ...data, email: ev.currentTarget.value });
-    } else if (inputChanged === 'phone') {
-      setData({ ...data, phone: ev.currentTarget.value });
-    } else if (inputChanged === 'linkedin') {
-      setData({ ...data, linkedin: ev.currentTarget.value });
-    } else if (inputChanged === 'github') {
-      setData({ ...data, github: ev.currentTarget.value });
-    } else if (inputChanged === 'colourpalette') {
-      setData({ ...data, palette: parseInt(ev.currentTarget.id) });
-    }
+    setData({
+      ...data,
+      [inputChanged]: ev.currentTarget.value,
+    });
   };
-  console.log(data.palette);
   return (
     <div>
       <header className="headerCard">
         <a href="./index.html">
-          {' '}
+          {" "}
           {/*revisar ruta*/}
           <img
             className="imgCard"
@@ -61,17 +44,17 @@ function App() {
           <div className="card-preview">
             <div className="card-preview__header js-card-preview-header">
               <h3 className="card-preview__title js-preview_name">
-                {data.name || 'Nombre completo'}
+                {data.name || "Nombre completo"}
               </h3>
               <p className="card-preview__subtitle js-preview_job">
-                {data.job || 'Front-end developer'}
+                {data.job || "Front-end developer"}
               </p>
             </div>
             <div
               className="card-preview__photo js__profile-image"
               style={{
                 backgroundImage: `url(${
-                  data.photo || 'https://www.fillmurray.com/240/200'
+                  data.photo || "https://www.fillmurray.com/240/200"
                 })`,
               }}
             ></div>
@@ -79,7 +62,7 @@ function App() {
               <ul className="card__socialmedia">
                 <li className="card__socialmedia--item">
                   <a
-                    href={`tel:${data.phone || ''}`}
+                    href={`tel:${data.phone || ""}`}
                     className="js-preview_phone"
                     alt="mobile"
                   >
@@ -88,7 +71,7 @@ function App() {
                 </li>
                 <li className="card__socialmedia--item">
                   <a
-                    href={`mailto:${data.email || ''}`}
+                    href={`mailto:${data.email || ""}`}
                     className="js-preview_email"
                     alt="email"
                   >
@@ -143,28 +126,30 @@ function App() {
                 <form className="palettes">
                   <input
                     type="radio"
-                    defaultValue="colours1"
+                    defaultValue="1"
                     id="1"
-                    name="colourpalette"
+                    name="palette"
                     className="colourpalette"
                     onChange={handleInput}
-                    defaultChecked
+                    checked={data.palette === "1"}
                   />
                   <input
                     type="radio"
-                    defaultValue="colours2"
+                    defaultValue="2"
                     id="2"
-                    name="colourpalette"
+                    name="palette"
                     className="colourpalette"
                     onChange={handleInput}
+                    checked={data.palette === "2"}
                   />
                   <input
                     type="radio"
-                    defaultValue="colours3"
+                    defaultValue="3"
                     id="3"
-                    name="colourpalette"
+                    name="palette"
                     className="colourpalette"
                     onChange={handleInput}
+                    checked={data.palette === "3"}
                   />
                 </form>
                 <section className="palettescolours">
@@ -214,10 +199,10 @@ function App() {
                   <input
                     type="text"
                     placeholder="Ej: Sally Jill"
-                    name="full_name"
+                    name="name"
                     id="name"
                     className="form__input js-full_name"
-                    defaultValue=""
+                    defaultValue={data.name}
                     onChange={handleInput}
                     required
                     pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"
@@ -232,6 +217,7 @@ function App() {
                     id="job"
                     className="form__input js-job"
                     pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"
+                    value={data.job}
                     onChange={handleInput}
                     required
                   />
@@ -257,6 +243,7 @@ function App() {
                       name="photo"
                       id="photo"
                       className="collapsed js__profile-upload-btn"
+                      value={data.photo}
                       onChange={handleInput}
                       required
                     />
@@ -271,6 +258,7 @@ function App() {
                     name="email"
                     id="email"
                     className="form__input js-email"
+                    value={data.email}
                     onChange={handleInput}
                     required
                   />
@@ -285,6 +273,7 @@ function App() {
                     name="phone"
                     id="phone"
                     className="form__input js-phone"
+                    value={data.phone}
                     onChange={handleInput}
                     /*pattern=" ^(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}" */
                   />
@@ -298,6 +287,7 @@ function App() {
                     name="linkedin"
                     id="linkedin"
                     className="form__input js-linkedin"
+                    value={data.linkedin}
                     onChange={handleInput}
                     required
                   />
@@ -310,6 +300,7 @@ function App() {
                     name="github"
                     id="github"
                     className="form__input js-github"
+                    value={data.github}
                     onChange={handleInput}
                   />
                 </fieldset>
@@ -338,7 +329,7 @@ function App() {
               <button className="buttonCard js-buttonCard buttonCard--on">
                 <i className="far fa-address-card"></i>
                 <p className="buttonCard__title">Crear tarjeta</p>
-              </button>{' '}
+              </button>{" "}
               {/*revisar botón. Input*/}
               <p className="catchError js_catchError"></p>
               <div className="createdCard js-createdCard collapsed">
@@ -346,7 +337,7 @@ function App() {
                   La tarjeta ha sido creada:
                 </h5>
                 <a className="createdCard__link js_createdCard__link" href="/">
-                  {' '}
+                  {" "}
                 </a>
                 <button className="createdCard__buttonTwitter">
                   <i className="fab fa-twitter"></i>
