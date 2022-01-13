@@ -1,18 +1,18 @@
-import "../styles/App.scss";
-import { useState } from "react";
-import imageCam from "../images/cam-image.png";
-import logoAwesome from "../images/logo-awesome-profile-cards.svg";
+import '../styles/App.scss';
+import { useState } from 'react';
+import imageCam from '../images/cam-image.png';
+import logoAwesome from '../images/logo-awesome-profile-cards.svg';
 
 function App() {
   const [data, setData] = useState({
     palette: '1',
-    name: "",
-    job: "",
-    photo: "",
-    email: "",
-    phone: "",
-    linkedin: "",
-    github: "",
+    name: '',
+    job: '',
+    photo: '',
+    email: '',
+    phone: '',
+    linkedin: '',
+    github: '',
   });
   const handleInput = (ev) => {
     const inputChanged = ev.currentTarget.name;
@@ -21,7 +21,6 @@ function App() {
       [inputChanged]: ev.currentTarget.value,
     });
   };
-
 
   const changePalette = () => {
     let paletteClass = '--palette1';
@@ -33,13 +32,26 @@ function App() {
       paletteClass = '--palette3';
     }
     return paletteClass;
-  }
+  };
+
+  const handleClickReset = () => {
+    setData({
+      palette: '1',
+      name: '',
+      job: '',
+      photo: '',
+      email: '',
+      phone: '',
+      linkedin: '',
+      github: '',
+    });
+  };
 
   return (
     <div>
       <header className="headerCard">
         <a href="./index.html">
-          {" "}
+          {' '}
           {/*revisar ruta*/}
           <img
             className="imgCard"
@@ -51,63 +63,88 @@ function App() {
 
       <main className="create_card_main">
         <section className="card_hero">
-          <button className="card_reset js-card_reset">
+          <button
+            onClick={handleClickReset}
+            className="card_reset js-card_reset"
+          >
             <i className="card_reset__icon far fa-trash-alt"> Reset</i>
           </button>
 
           <div className="card-preview">
-            <div className={`card-preview__header js-card-preview-header card-preview__header${changePalette()}`}>
-              <h3 className={`card-preview__title card-preview__title${changePalette()} js-preview_name`}>
-                {data.name || "Nombre completo"}
+            <div
+              className={`card-preview__header js-card-preview-header card-preview__header${changePalette()}`}
+            >
+              <h3
+                className={`card-preview__title card-preview__title${changePalette()} js-preview_name`}
+              >
+                {data.name || 'Nombre completo'}
               </h3>
               <p className="card-preview__subtitle js-preview_job">
-                {data.job || "Front-end developer"}
+                {data.job || 'Front-end developer'}
               </p>
             </div>
             <div
               className="card-preview__photo js__profile-image"
               style={{
                 backgroundImage: `url(${
-                  data.photo || "https://www.fillmurray.com/240/200"
+                  data.photo || 'https://www.fillmurray.com/240/200'
                 })`,
               }}
             ></div>
             <nav className="card-preview__nav">
               <ul className="card__socialmedia">
-                <li className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}>
+                <li
+                  className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}
+                >
                   <a
-                    href={`tel:${data.phone || ""}`}
+                    href={`tel:${data.phone || ''}`}
                     className="js-preview_phone"
                     alt="mobile"
                   >
-                    <i className={`socialmedia_icon fas fa-mobile-alt socialmedia_icon${changePalette()}`}> </i>
+                    <i
+                      className={`socialmedia_icon fas fa-mobile-alt socialmedia_icon${changePalette()}`}
+                    >
+                      {' '}
+                    </i>
                   </a>
                 </li>
-                <li className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}>
+                <li
+                  className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}
+                >
                   <a
-                    href={`mailto:${data.email || ""}`}
+                    href={`mailto:${data.email || ''}`}
                     className="js-preview_email"
                     alt="email"
                   >
-                    <i className={`socialmedia_icon far fa-envelope socialmedia_icon${changePalette()}`}></i>
+                    <i
+                      className={`socialmedia_icon far fa-envelope socialmedia_icon${changePalette()}`}
+                    ></i>
                   </a>
                 </li>
-                <li className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}>
+                <li
+                  className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}
+                >
                   <a
                     href={`http://www.linkedin.com/in/${data.linkedin}`}
                     className="js-preview_linkedin"
                     alt="linkedin"
                   >
-                    <i className={`socialmedia_icon fab fa-linkedin-in socialmedia_icon${changePalette()}`}></i>
+                    <i
+                      className={`socialmedia_icon fab fa-linkedin-in socialmedia_icon${changePalette()}`}
+                    ></i>
                   </a>
                 </li>
-                <li className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}>
+                <li
+                  className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}
+                >
                   <a
                     href={`https://github.com/${data.github}`}
                     className="js-preview_github"
                     alt="github"
                   >
-                    <i className={`socialmedia_icon fab fa-github-alt socialmedia_icon${changePalette()}`}></i>
+                    <i
+                      className={`socialmedia_icon fab fa-github-alt socialmedia_icon${changePalette()}`}
+                    ></i>
                   </a>
                 </li>
               </ul>
@@ -140,30 +177,30 @@ function App() {
                 <form className="palettes">
                   <input
                     type="radio"
-                    defaultValue="1"
+                    value="1"
                     id="colours1"
                     name="palette"
                     className="colourpalette"
                     onChange={handleInput}
-                    checked={data.palette === "1"}
+                    checked={data.palette === '1'}
                   />
                   <input
                     type="radio"
-                    defaultValue="2"
+                    value="2"
                     id="colours2"
                     name="palette"
                     className="colourpalette"
                     onChange={handleInput}
-                    checked={data.palette === "2"}
+                    checked={data.palette === '2'}
                   />
                   <input
                     type="radio"
-                    defaultValue="3"
+                    value="3"
                     id="colours3"
                     name="palette"
                     className="colourpalette"
                     onChange={handleInput}
-                    checked={data.palette === "3"}
+                    checked={data.palette === '3'}
                   />
                 </form>
                 <section className="palettescolours">
@@ -216,7 +253,7 @@ function App() {
                     name="name"
                     id="name"
                     className="form__input js-full_name"
-                    defaultValue={data.name}
+                    value={data.name}
                     onChange={handleInput}
                     required
                     pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"
@@ -343,7 +380,7 @@ function App() {
               <button className="buttonCard js-buttonCard buttonCard--on">
                 <i className="far fa-address-card"></i>
                 <p className="buttonCard__title">Crear tarjeta</p>
-              </button>{" "}
+              </button>{' '}
               {/*revisar botón. Input*/}
               <p className="catchError js_catchError"></p>
               <div className="createdCard js-createdCard collapsed">
@@ -351,7 +388,7 @@ function App() {
                   La tarjeta ha sido creada:
                 </h5>
                 <a className="createdCard__link js_createdCard__link" href="/">
-                  {" "}
+                  {' '}
                 </a>
                 <button className="createdCard__buttonTwitter">
                   <i className="fab fa-twitter"></i>
