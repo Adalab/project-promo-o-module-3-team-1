@@ -51,7 +51,7 @@
     width: 100%;
 
     &.collapsed {
-      //display: none;
+      display: none;
     }
 
     & .colourstitle {
@@ -67,7 +67,9 @@
         display: flex;
         flex-direction: column;
 
-        .colourpalette {
+        #colours1,
+        #colours2,
+        #colours3 {
           margin: 4px 10px 24px 0;
           height: 17px;
           width: 17px;

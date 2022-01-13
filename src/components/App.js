@@ -5,7 +5,7 @@ import logoAwesome from "../images/logo-awesome-profile-cards.svg";
 
 function App() {
   const [data, setData] = useState({
-    palette: 1,
+    palette: '1',
     name: "",
     job: "",
     photo: "",
@@ -21,6 +21,20 @@ function App() {
       [inputChanged]: ev.currentTarget.value,
     });
   };
+
+
+  const changePalette = () => {
+    let paletteClass = '--palette1';
+    if (data.palette === '1') {
+      paletteClass = '--palette1';
+    } else if (data.palette === '2') {
+      paletteClass = '--palette2';
+    } else if (data.palette === '3') {
+      paletteClass = '--palette3';
+    }
+    return paletteClass;
+  }
+
   return (
     <div>
       <header className="headerCard">
@@ -42,8 +56,8 @@ function App() {
           </button>
 
           <div className="card-preview">
-            <div className="card-preview__header js-card-preview-header">
-              <h3 className="card-preview__title js-preview_name">
+            <div className={`card-preview__header js-card-preview-header card-preview__header${changePalette()}`}>
+              <h3 className={`card-preview__title card-preview__title${changePalette()} js-preview_name`}>
                 {data.name || "Nombre completo"}
               </h3>
               <p className="card-preview__subtitle js-preview_job">
@@ -60,40 +74,40 @@ function App() {
             ></div>
             <nav className="card-preview__nav">
               <ul className="card__socialmedia">
-                <li className="card__socialmedia--item">
+                <li className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}>
                   <a
                     href={`tel:${data.phone || ""}`}
                     className="js-preview_phone"
                     alt="mobile"
                   >
-                    <i className="socialmedia_icon fas fa-mobile-alt"> </i>
+                    <i className={`socialmedia_icon fas fa-mobile-alt socialmedia_icon${changePalette()}`}> </i>
                   </a>
                 </li>
-                <li className="card__socialmedia--item">
+                <li className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}>
                   <a
                     href={`mailto:${data.email || ""}`}
                     className="js-preview_email"
                     alt="email"
                   >
-                    <i className="socialmedia_icon far fa-envelope"></i>
+                    <i className={`socialmedia_icon far fa-envelope socialmedia_icon${changePalette()}`}></i>
                   </a>
                 </li>
-                <li className="card__socialmedia--item">
+                <li className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}>
                   <a
                     href={`http://www.linkedin.com/in/${data.linkedin}`}
                     className="js-preview_linkedin"
                     alt="linkedin"
                   >
-                    <i className="socialmedia_icon fab fa-linkedin-in"></i>
+                    <i className={`socialmedia_icon fab fa-linkedin-in socialmedia_icon${changePalette()}`}></i>
                   </a>
                 </li>
-                <li className="card__socialmedia--item">
+                <li className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}>
                   <a
                     href={`https://github.com/${data.github}`}
                     className="js-preview_github"
                     alt="github"
                   >
-                    <i className="socialmedia_icon fab fa-github-alt"></i>
+                    <i className={`socialmedia_icon fab fa-github-alt socialmedia_icon${changePalette()}`}></i>
                   </a>
                 </li>
               </ul>
@@ -127,7 +141,7 @@ function App() {
                   <input
                     type="radio"
                     defaultValue="1"
-                    id="1"
+                    id="colours1"
                     name="palette"
                     className="colourpalette"
                     onChange={handleInput}
@@ -136,7 +150,7 @@ function App() {
                   <input
                     type="radio"
                     defaultValue="2"
-                    id="2"
+                    id="colours2"
                     name="palette"
                     className="colourpalette"
                     onChange={handleInput}
@@ -145,7 +159,7 @@ function App() {
                   <input
                     type="radio"
                     defaultValue="3"
-                    id="3"
+                    id="colours3"
                     name="palette"
                     className="colourpalette"
                     onChange={handleInput}

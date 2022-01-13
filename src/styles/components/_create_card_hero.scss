@@ -45,6 +45,16 @@
   box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.35);
   &__header {
     border-left: 5px solid #438792;
+
+    &--palette1 {
+      border-left: 5px solid #438792;
+    }
+    &--palette2 {
+      border-left: 5px solid #BD1010;
+    }
+    &--palette3 {
+      border-left: 5px solid #EAB052;
+    }
   }
 
   &__photo {
@@ -63,6 +73,16 @@
     text-transform: capitalize;
     font-weight: bold;
     color: #114e4e;
+
+    &--palette1 {
+      color: #114e4e;
+    }
+    &--palette2 {
+      color: #420101;
+    }
+    &--palette3 {
+      color: #3E5B65;
+    }
   }
   &__subtitle {
     padding: 0 14px 0 20px;
@@ -87,8 +107,28 @@
     margin-right: 10px;
     padding: 6px;
     border: 2px solid #a2deaf;
+
+    &--palette1 {
+      border: 2px solid #a2deaf;
+    }
+    &--palette2 {
+      border: 2px solid #E95626;
+    }
+    &--palette3 {
+      border: 2px solid #A0C0CF;
+    }
     .socialmedia_icon {
       color: #114e4e;
+
+      &--palette1 {
+        color: #114e4e;
+      }
+      &--palette2 {
+        color: #420101;
+      }
+      &--palette3 {
+        color: #3E5B65;
+      }
     }
   }
 }
