@@ -1,19 +1,22 @@
-import "../styles/App.scss";
-import { useState } from "react";
-import imageCam from "../images/cam-image.png";
-import logoAwesome from "../images/logo-awesome-profile-cards.svg";
+import '../styles/App.scss';
+import { useEffect, useState } from 'react';
+import imageCam from '../images/cam-image.png';
+import logoAwesome from '../images/logo-awesome-profile-cards.svg';
+import localStorage from '../services/localstorage';
 
 function App() {
-  const [data, setData] = useState({
-    palette: "1",
-    name: "",
-    job: "",
-    photo: "",
-    email: "",
-    phone: "",
-    linkedin: "",
-    github: "",
-  });
+  const [data, setData] = useState(
+    localStorage.get('data', {
+      palette: '1',
+      name: '',
+      job: '',
+      photo: '',
+      email: '',
+      phone: '',
+      linkedin: '',
+      github: '',
+    })
+  );
   const handleInput = (ev) => {
     const inputChanged = ev.currentTarget.name;
     setData({
@@ -22,28 +25,32 @@ function App() {
     });
   };
 
+  useEffect(() => {
+    localStorage.set('data', data);
+  }, [data]);
+
   const changePalette = () => {
-    let paletteClass = "--palette1";
-    if (data.palette === "1") {
-      paletteClass = "--palette1";
-    } else if (data.palette === "2") {
-      paletteClass = "--palette2";
-    } else if (data.palette === "3") {
-      paletteClass = "--palette3";
+    let paletteClass = '--palette1';
+    if (data.palette === '1') {
+      paletteClass = '--palette1';
+    } else if (data.palette === '2') {
+      paletteClass = '--palette2';
+    } else if (data.palette === '3') {
+      paletteClass = '--palette3';
     }
     return paletteClass;
   };
 
   const handleClickReset = () => {
     setData({
-      palette: "1",
-      name: "",
-      job: "",
-      photo: "",
-      email: "",
-      phone: "",
-      linkedin: "",
-      github: "",
+      palette: '1',
+      name: '',
+      job: '',
+      photo: '',
+      email: '',
+      phone: '',
+      linkedin: '',
+      github: '',
     });
   };
   const isDisabled = () => {
@@ -58,14 +65,14 @@ function App() {
     }
   };
   const handleClickBtn = () => {
-    console.log("hola");
+    console.log('hola');
   };
 
   return (
     <div>
       <header className="headerCard">
         <a href="./index.html">
-          {" "}
+          {' '}
           {/*revisar ruta*/}
           <img
             className="imgCard"
@@ -91,17 +98,17 @@ function App() {
               <h3
                 className={`card-preview__title card-preview__title${changePalette()} js-preview_name`}
               >
-                {data.name || "Nombre completo"}
+                {data.name || 'Nombre completo'}
               </h3>
               <p className="card-preview__subtitle js-preview_job">
-                {data.job || "Front-end developer"}
+                {data.job || 'Front-end developer'}
               </p>
             </div>
             <div
               className="card-preview__photo js__profile-image"
               style={{
                 backgroundImage: `url(${
-                  data.photo || "https://www.fillmurray.com/240/200"
+                  data.photo || 'https://www.fillmurray.com/240/200'
                 })`,
               }}
             ></div>
@@ -111,14 +118,14 @@ function App() {
                   className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}
                 >
                   <a
-                    href={`tel:${data.phone || ""}`}
+                    href={`tel:${data.phone || ''}`}
                     className="js-preview_phone"
                     alt="mobile"
                   >
                     <i
                       className={`socialmedia_icon fas fa-mobile-alt socialmedia_icon${changePalette()}`}
                     >
-                      {" "}
+                      {' '}
                     </i>
                   </a>
                 </li>
@@ -126,7 +133,7 @@ function App() {
                   className={`card__socialmedia--item card__socialmedia--item${changePalette()}`}
                 >
                   <a
-                    href={`mailto:${data.email || ""}`}
+                    href={`mailto:${data.email || ''}`}
                     className="js-preview_email"
                     alt="email"
                   >
@@ -196,7 +203,7 @@ function App() {
                     name="palette"
                     className="colourpalette"
                     onChange={handleInput}
-                    checked={data.palette === "1"}
+                    checked={data.palette === '1'}
                   />
                   <input
                     type="radio"
@@ -205,7 +212,7 @@ function App() {
                     name="palette"
                     className="colourpalette"
                     onChange={handleInput}
-                    checked={data.palette === "2"}
+                    checked={data.palette === '2'}
                   />
                   <input
                     type="radio"
@@ -214,7 +221,7 @@ function App() {
                     name="palette"
                     className="colourpalette"
                     onChange={handleInput}
-                    checked={data.palette === "3"}
+                    checked={data.palette === '3'}
                   />
                 </form>
                 <section className="palettescolours">
@@ -392,13 +399,15 @@ function App() {
               id="shareContent"
             >
               <button
-                className={`buttonCard js-buttonCard buttonCard--${isDisabled() ? 'off' : 'on'}`}
+                className={`buttonCard js-buttonCard buttonCard--${
+                  isDisabled() ? 'off' : 'on'
+                }`}
                 disabled={isDisabled()}
                 onClick={handleClickBtn}
               >
                 <i className="far fa-address-card"></i>
                 <p className="buttonCard__title">Crear tarjeta</p>
-              </button>{" "}
+              </button>{' '}
               {/*revisar botón. Input*/}
               <p className="catchError js_catchError"></p>
               <div className="createdCard js-createdCard collapsed">
@@ -406,7 +415,7 @@ function App() {
                   La tarjeta ha sido creada:
                 </h5>
                 <a className="createdCard__link js_createdCard__link" href="/">
-                  {" "}
+                  {' '}
                 </a>
                 <button className="createdCard__buttonTwitter">
                   <i className="fab fa-twitter"></i>
