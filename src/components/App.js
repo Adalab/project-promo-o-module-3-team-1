@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import localStorage from '../services/localstorage';
 import Header from './Header';
 import Footer from './Footer';
-import Preview from './Preview';
-import Form from './Form';
+import Preview from './preview/Preview';
+import Form from './form/Form';
 
 function App() {
   const [data, setData] = useState(
