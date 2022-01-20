@@ -1,3 +1,5 @@
+import GetAvatar from "../avatar/GetAvatar";
+
 const Fill = (props) => {
   return (
     <form action="" method="post" className="form js-form">
@@ -38,24 +40,14 @@ const Fill = (props) => {
           <div className="form__image-section">
             <label
               className="form__image-section--add js__profile-trigger"
-              htmlFor="photo"
+              htmlFor="file"
             >
               Añadir imagen
             </label>
-            <div
-              className="form__image-section--preview js__profile-preview"
-              style={{
-                backgroundImage: `url(${props.data.photo})`,
-              }}
-            ></div>
-            <input
-              type="file"
-              name="photo"
-              id="photo"
-              className="collapsed js__profile-upload-btn"
-              value={props.data.photo}
-              onChange={props.handleInput}
-              required
+
+            <GetAvatar
+              updateInputPhoto={props.updateInputPhoto}
+              avatar={props.data.photo}
             />
           </div>
 

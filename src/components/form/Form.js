@@ -28,7 +28,7 @@ function Form(props) {
       </section>
       <section className="section__form container containerdesign">
         <InputLabel id="formContent" icon="far fa-keyboard" title="Rellena" />
-        <Fill data={props.data} handleInput={props.handleInput}/>
+        <Fill data={props.data} handleInput={props.handleInput}  updateInputPhoto = {props.updateInputPhoto}/>
       </section>
       <section className="container containerdesign">
         <InputLabel

@@ -1,22 +1,22 @@
-import '../styles/App.scss';
-import { useEffect, useState } from 'react';
-import localStorage from '../services/localstorage';
-import Header from './Header';
-import Footer from './Footer';
-import Preview from './preview/Preview';
-import Form from './form/Form';
+import "../styles/App.scss";
+import { useEffect, useState } from "react";
+import localStorage from "../services/localstorage";
+import Header from "./Header";
+import Footer from "./Footer";
+import Preview from "./preview/Preview";
+import Form from "./form/Form";
 
 function App() {
   const [data, setData] = useState(
-    localStorage.get('data', {
-      palette: '1',
-      name: '',
-      job: '',
-      photo: '',
-      email: '',
-      phone: '',
-      linkedin: '',
-      github: '',
+    localStorage.get("data", {
+      palette: "1",
+      name: "",
+      job: "",
+      photo: "",
+      email: "",
+      phone: "",
+      linkedin: "",
+      github: "",
     })
   );
   const handleInput = (ev) => {
@@ -27,36 +27,44 @@ function App() {
     });
   };
 
+  const updateInputPhoto = (avatar) => {
+    setData({ ...data, photo: avatar });
+  };
+
   useEffect(() => {
-    localStorage.set('data', data);
+    localStorage.set("data", data);
   }, [data]);
 
   const handleClickReset = () => {
     setData({
-      palette: '1',
-      name: '',
-      job: '',
-      photo: '',
-      email: '',
-      phone: '',
-      linkedin: '',
-      github: '',
+      palette: "1",
+      name: "",
+      job: "",
+      photo: "",
+      email: "",
+      phone: "",
+      linkedin: "",
+      github: "",
     });
   };
 
   const handleClickBtn = () => {
-    console.log('hola');
+    console.log("hola");
   };
 
   return (
     <div>
       <Header />
       <main className="create_card_main">
-        <Preview data={data} handleClickReset={handleClickReset}/>
-        <Form data={data} handleInput={handleInput} handleClickBtn={handleClickBtn}/>
+        <Preview data={data} handleClickReset={handleClickReset} />
+        <Form
+          data={data}
+          handleInput={handleInput}
+          handleClickBtn={handleClickBtn}
+          updateInputPhoto = {updateInputPhoto}
+        />
       </main>
       <Footer />
-      
     </div>
   );
 }

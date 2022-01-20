@@ -1,4 +1,5 @@
 import PreviewIcons from "./PreviewIcons";
+import Profile from "../avatar/Profile";
 
 function Preview(props) {
     const changePalette = () => {
@@ -35,14 +36,15 @@ function Preview(props) {
                 {props.data.job || 'Front-end developer'}
               </p>
             </div>
-            <div
+            <Profile avatar={props.data.photo} />
+            {/* <div
               className="card-preview__photo js__profile-image"
               style={{
                 backgroundImage: `url(${
                   props.data.photo || 'https://www.fillmurray.com/240/200'
                 })`,
               }}
-            ></div>
+            ></div> */}
             <nav className="card-preview__nav">
               <ul className="card__socialmedia">
                 <PreviewIcons data={props.data} changePalette={changePalette()} url={`tel:${props.data.phone || ''}`}alt='mobile' className='fas fa-mobile-alt'isBlank={false}/>
