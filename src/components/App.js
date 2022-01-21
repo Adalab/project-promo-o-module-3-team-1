@@ -19,6 +19,10 @@ function App() {
       github: "",
     })
   );
+  const [designOpen, setDesignOpen] = useState(true);
+  const [fillOpen, setFillOpen] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
+
   const handleInput = (ev) => {
     const inputChanged = ev.currentTarget.name;
     setData({
@@ -51,6 +55,21 @@ function App() {
   const handleClickBtn = () => {
     console.log("hola");
   };
+  const handleClickCollap = (labelName) => {
+    if (labelName === "Diseña") {
+      setDesignOpen(!designOpen);
+      setFillOpen(false);
+      setShareOpen(false);
+    } else if (labelName === "Rellena") {
+      setDesignOpen(false);
+      setFillOpen(!fillOpen);
+      setShareOpen(false);
+    } else if (labelName === "Comparte") {
+      setDesignOpen(false);
+      setFillOpen(false);
+      setShareOpen(!shareOpen);
+    }
+  };
 
   return (
     <div>
@@ -61,7 +80,11 @@ function App() {
           data={data}
           handleInput={handleInput}
           handleClickBtn={handleClickBtn}
-          updateInputPhoto = {updateInputPhoto}
+          updateInputPhoto={updateInputPhoto}
+          handleClickCollap={handleClickCollap}
+          designOpen= {designOpen}
+          fillOpen= {fillOpen}
+          shareOpen= {shareOpen}
         />
       </main>
       <Footer />

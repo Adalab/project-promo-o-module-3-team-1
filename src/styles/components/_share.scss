@@ -45,7 +45,7 @@
   margin-bottom: 30px;
 
   &.collapsed {
-    //display: none;
+    display: none;
   }
 
   .buttonCard {
@@ -102,10 +102,6 @@
   padding-top: 20px;
   border-top: 1px solid #d8d8d8;
   width: 100%;
-
-  &.collapsed {
-    //display: none;
-  }
 
   &__title {
     color: $lettercolor;

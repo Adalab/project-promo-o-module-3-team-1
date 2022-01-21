@@ -23,20 +23,36 @@ function Form(props) {
           id="designContent"
           icon="far fa-object-ungroup"
           title="Diseña"
+          handleClickCollap={props.handleClickCollap}
         />
-        <Design data={props.data} handleInput={props.handleInput}/>
+        <Design data={props.data} handleInput={props.handleInput}  designOpen={props.designOpen}/>
       </section>
       <section className="section__form container containerdesign">
-        <InputLabel id="formContent" icon="far fa-keyboard" title="Rellena" />
-        <Fill data={props.data} handleInput={props.handleInput}  updateInputPhoto = {props.updateInputPhoto}/>
+        <InputLabel
+          id="formContent"
+          icon="far fa-keyboard"
+          title="Rellena"
+          handleClickCollap={props.handleClickCollap}
+        />
+        <Fill
+          data={props.data}
+          handleInput={props.handleInput}
+          updateInputPhoto={props.updateInputPhoto}
+          fillOpen={props.fillOpen}
+        />
       </section>
       <section className="container containerdesign">
         <InputLabel
           id="shareContent"
           icon="fas fa-share-alt"
           title="Comparte"
+          handleClickCollap={props.handleClickCollap}
         />
-        <Share data={props.data} isDisabled={isDisabled} />
+        <Share
+          data={props.data}
+          isDisabled={isDisabled}
+          shareOpen={props.shareOpen}
+        />
       </section>
     </section>
   );

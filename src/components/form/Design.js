@@ -3,7 +3,7 @@ import Palettes from "./Palettes";
 const Design = (props) => {
   return (
     <section
-      className="paletteandcolours js-sectionDesign js_content"
+      className={`paletteandcolours js-sectionDesign js_content ${props.designOpen ? '' : 'collapsed'}`}
       id="designContent"
     >
       <p className="colourstitle">Colores</p>
@@ -42,21 +42,6 @@ const Design = (props) => {
           <Palettes paletteClass="1" />
           <Palettes paletteClass="2" />
           <Palettes paletteClass="3" />
-          {/* <ul className="colours1">
-              <li className="palette1 colour1"></li>
-              <li className="palette1 colour2"></li>
-              <li className="palette1 colour3"></li>
-            </ul>
-            <ul className="colours2">
-              <li className="palette2 colour1"></li>
-              <li className="palette2 colour2"></li>
-              <li className="palette2 colour3"></li>
-            </ul>
-            <ul className="colours3">
-              <li className="palette3 colour1"></li>
-              <li className="palette3 colour2"></li>
-              <li className="palette3 colour3"></li>
-            </ul> */}
         </section>
       </section>
     </section>

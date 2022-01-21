@@ -3,7 +3,7 @@ import GetAvatar from "../avatar/GetAvatar";
 const Fill = (props) => {
   return (
     <form action="" method="post" className="form js-form">
-      <div className="js-sectionFill js_content collapsed" id="formContent">
+      <div className={`js-sectionFill js_content ${props.fillOpen ? '' : 'collapsed'}`} id="formContent">
         <fieldset>
           <label htmlFor="name" className="form__label">
             Nombre completo

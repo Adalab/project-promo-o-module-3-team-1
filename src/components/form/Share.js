@@ -2,7 +2,7 @@ import ShareBtn from "./ShareBtn"
 const Share = (props) => {
   return (
     <div
-      className="containerButton js-sectionShare js_content collapsed"
+      className={`containerButton js-sectionShare js_content ${props.shareOpen ? '' : 'collapsed'}`}
       id="shareContent"
     >
       <ShareBtn isDisabled={props.isDisabled} />
