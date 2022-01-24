@@ -1,6 +1,6 @@
 function InputLabel(props) {
   const handleClickCollap = () => {
-    props.handleClickCollap(props.title)
+    props.handleClickCollap(props.title);
   };
   return (
     <div className="design" id={props.id} onClick={handleClickCollap}>
@@ -8,7 +8,10 @@ function InputLabel(props) {
         <i className={props.icon} alt="icon"></i>
         <h4 className="designtitle">{props.title}</h4>
       </div>
-      <i className="fas fa-chevron-up" alt="icon"></i>
+      <i
+        className={`fas fa-chevron-${props.arrow ? "up" : "down"}`}
+        alt="icon"
+      ></i>
     </div>
   );
 }

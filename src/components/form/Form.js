@@ -23,6 +23,7 @@ function Form(props) {
           id="designContent"
           icon="far fa-object-ungroup"
           title="Diseña"
+          arrow={props.designOpen}
           handleClickCollap={props.handleClickCollap}
         />
         <Design data={props.data} handleInput={props.handleInput}  designOpen={props.designOpen}/>
@@ -32,6 +33,7 @@ function Form(props) {
           id="formContent"
           icon="far fa-keyboard"
           title="Rellena"
+          arrow={props.fillOpen}
           handleClickCollap={props.handleClickCollap}
         />
         <Fill
@@ -46,6 +48,7 @@ function Form(props) {
           id="shareContent"
           icon="fas fa-share-alt"
           title="Comparte"
+          arrow={props.shareOpen}
           handleClickCollap={props.handleClickCollap}
         />
         <Share

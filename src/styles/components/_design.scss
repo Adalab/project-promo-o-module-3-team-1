@@ -12,6 +12,10 @@
   @include tablet {
     padding-top: 7px;
   }
+  
+  & section.collapsed {
+    display: none;
+  }
 
   & .design {
     display: flex;
