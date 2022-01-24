@@ -4,18 +4,6 @@ import Fill from "./Fill";
 import Share from "./Share";
 
 function Form(props) {
-  const isDisabled = () => {
-    if (
-      props.data.name.length === 0 ||
-      props.data.job.length === 0 ||
-      props.data.email.length === 0 ||
-      props.data.linkedin.length === 0 ||
-      props.data.github.length === 0
-    ) {
-      return true;
-    }
-  };
-
   return (
     <section className="background_features">
       <section className="container containerdesign">
@@ -26,7 +14,11 @@ function Form(props) {
           arrow={props.designOpen}
           handleClickCollap={props.handleClickCollap}
         />
-        <Design data={props.data} handleInput={props.handleInput}  designOpen={props.designOpen}/>
+        <Design
+          data={props.data}
+          handleInput={props.handleInput}
+          designOpen={props.designOpen}
+        />
       </section>
       <section className="section__form container containerdesign">
         <InputLabel
@@ -53,7 +45,7 @@ function Form(props) {
         />
         <Share
           data={props.data}
-          isDisabled={isDisabled}
+          isDisabled={props.isDisabled}
           shareOpen={props.shareOpen}
         />
       </section>
