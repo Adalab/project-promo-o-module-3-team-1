@@ -1,34 +1,35 @@
+import { Link } from 'react-router-dom';
 const Main = () => {
   return (
-    <section class="hero">
-      <h1 class="hero__section--title">Crea tu tarjeta de visita</h1>
-      <p class="hero__section--text">
+    <section className="hero">
+      <h1 className="hero__section--title">Crea tu tarjeta de visita</h1>
+      <p className="hero__section--text">
         Crea mejores contactos profesionales de forma fácil y cómoda
       </p>
 
-      <nav class="nav-container">
-        <ul class="nav-container__list">
-          <li class="list-desing">
-            <i class="list-desing__icon far fa-object-ungroup"></i>Diseña
+      <nav className="nav-container">
+        <ul className="nav-container__list">
+          <li className="list-desing">
+            <i className="list-desing__icon far fa-object-ungroup"></i>Diseña
           </li>
-          <li class="list-desing">
-            <i class="list-desing__icon far fa-keyboard"></i>Rellena
+          <li className="list-desing">
+            <i className="list-desing__icon far fa-keyboard"></i>Rellena
           </li>
-          <li class="list-desing">
-            <i class="list-desing__icon fas fa-share-alt"></i>Comparte
+          <li className="list-desing">
+            <i className="list-desing__icon fas fa-share-alt"></i>Comparte
           </li>
         </ul>
       </nav>
 
-      <div class="button_container">
-        <a
-          class="button_start"
-          href="./create_card.html"
+      <div className="button_container">
+        <Link
+          to="/CardGenerate"
+          className="button_start"
           title="Go to create card"
           alt="Go to create card"
         >
           Comenzar
-        </a>
+        </Link>
       </div>
     </section>
   );

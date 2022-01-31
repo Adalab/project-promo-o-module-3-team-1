@@ -98,22 +98,28 @@ function App() {
 
   return (
     <div>
-      <Landing />
-      <Header />
-      <main className="create_card_main">
-        <Preview data={data} handleClickReset={handleClickReset} />
-        <Form
-          data={data}
-          handleInput={handleInput}
-          handleClickBtn={handleClickBtn}
-          updateInputPhoto={updateInputPhoto}
-          handleClickCollap={handleClickCollap}
-          designOpen={designOpen}
-          fillOpen={fillOpen}
-          shareOpen={shareOpen}
-          isDisabled={isDisabled}
-        />
-      </main>
+      <Switch>
+        <Route exact path="/">
+          <Landing />
+        </Route>
+        <Route exact path="/CardGenerate">
+          <Header className="headerCard" classNameImage="imgCard" />
+          <main className="create_card_main">
+            <Preview data={data} handleClickReset={handleClickReset} />
+            <Form
+              data={data}
+              handleInput={handleInput}
+              handleClickBtn={handleClickBtn}
+              updateInputPhoto={updateInputPhoto}
+              handleClickCollap={handleClickCollap}
+              designOpen={designOpen}
+              fillOpen={fillOpen}
+              shareOpen={shareOpen}
+              isDisabled={isDisabled}
+            />
+          </main>
+        </Route>
+      </Switch>
       <Footer />
     </div>
   );

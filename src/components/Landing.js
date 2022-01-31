@@ -1,15 +1,11 @@
-import Header from './Header';
-import Footer from './Footer';
 import Main from './Main';
+import Header from './Header';
 
-const Landing = () => {
+const Landing = (props) => {
   return (
     <>
-      <body class="body-landing">
-        <Header />
-        <Main />
-        <Footer />
-      </body>
+      <Header className="headerIndex" classNameImage="imgIndex" />
+      <Main />
     </>
   );
 };
