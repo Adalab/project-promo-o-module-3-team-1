@@ -1,7 +1,7 @@
-import ShareBtn from './ShareBtn';
+import ShareBtn from "./ShareBtn";
 const Share = (props) => {
   const renderShareUrl = () => {
-    if (!props.isDisabled() && props.shareUrl !== '') {
+    if (!props.isDisabled() && props.shareUrl !== "") {
       return (
         <div className="createdCard js-createdCard collapsed">
           <h5 className="createdCard__title">La tarjeta ha sido creada:</h5>
@@ -17,8 +17,10 @@ const Share = (props) => {
             <i className="fab fa-twitter"></i>
             <a
               className="buttonLink js-buttonLink"
-              href="www.twitter.com"
+              href={`https://twitter.com/intent/tweet?text=%C2%A1Comparte%20esta%20tarjeta%20super%20molona%21&url=${props.shareUrl}`}
               title="twitter"
+              target="_blank"
+              rel="noreferrer"
             >
               Compartir en Twitter
             </a>
@@ -41,7 +43,7 @@ const Share = (props) => {
   return (
     <div
       className={`containerButton js-sectionShare js_content ${
-        props.shareOpen ? '' : 'collapsed'
+        props.shareOpen ? "" : "collapsed"
       }`}
       id="shareContent"
     >
