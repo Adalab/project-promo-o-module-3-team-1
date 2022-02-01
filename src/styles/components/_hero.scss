@@ -4,6 +4,8 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding-bottom: 18%;
+
   // @include tablet {
   // }
   // @include desktop {
@@ -11,12 +13,12 @@
   // }
 
   &__section--title {
-    font-family: 'Merriweather', serif;
+    font-family: "Merriweather", serif;
     font-size: 19.2px;
     color: #e17334;
     font-weight: bold;
     line-height: normal;
-    padding-top: 35.4px;
+
     @include tablet {
       font-size: 24px;
       padding-top: 31px;

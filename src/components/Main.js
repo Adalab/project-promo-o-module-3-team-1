@@ -1,32 +1,39 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 const Main = () => {
   return (
-    <section className="hero">
-      <h1 className="hero__section--title">Crea tu tarjeta de visita</h1>
-      <p className="hero__section--text">
-        Crea mejores contactos profesionales de forma fácil y cómoda
+    <section className="landing">
+      <h1 className="landing__title">
+        Crea tu tarjeta de visita
+      </h1>
+      <p className="landing__text">
+        Crea mejores contactos
+        profesionales de forma fácil y
+        cómoda
       </p>
 
-      <nav className="nav-container">
-        <ul className="nav-container__list">
-          <li className="list-desing">
-            <i className="list-desing__icon far fa-object-ungroup"></i>Diseña
+      <nav className="landing__nav">
+        <ul className="list">
+          <li className="list__item">
+            <i className="list__item--icon far fa-object-ungroup"></i>
+            Diseña
           </li>
-          <li className="list-desing">
-            <i className="list-desing__icon far fa-keyboard"></i>Rellena
+          <li className="list__item">
+            <i className="list__item--icon far fa-keyboard"></i>
+            Rellena
           </li>
-          <li className="list-desing">
-            <i className="list-desing__icon fas fa-share-alt"></i>Comparte
+          <li className="list__item">
+            <i className="list__item--icon fas fa-share-alt"></i>
+            Comparte
           </li>
         </ul>
       </nav>
 
-      <div className="button_container">
+      <div className="landing__btn">
         <Link
           to="/CardGenerate"
-          className="button_start"
-          title="Go to create card"
-          alt="Go to create card"
+          className="landing__btn--link"
+          title="Go create card"
+          alt="Go create card"
         >
           Comenzar
         </Link>
